@@ -31,9 +31,9 @@ class DATABASE(object):
 
     Parameters
     ----------
-    host: str (default='r4-influxdb.ricplt.svc.cluster.local')
+    host: str (default='r4-influxdb-influxdb2.ricplt.svc.cluster.local')
         hostname to connect to InfluxDB
-    port: int (default='8086')
+    port: int (default='80')
         port to connect to InfluxDB
     username: str (default='root')
         user to connect
@@ -48,7 +48,7 @@ class DATABASE(object):
         fetched data from database
     """
 
-    def __init__(self, dbname='Timeseries', user='root', password='root', host="r4-influxdb.ricplt", port='8086', path='', ssl=False):
+    def __init__(self, dbname='Timeseries', user='root', password='root', host="r4-influxdb-influxdb2.ricplt.svc.cluster.local", port='80', path='', ssl=False):
         self.data = None
         self.host = host
         self.port = port
