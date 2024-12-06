@@ -1,0 +1,49 @@
+{
+        "name": "ml",
+        "version": "0.0.1",
+        "containers": [
+            {
+                "name": "ml",
+                "image": {
+                    "registry": "nexus3.o-ran-sc.org:10002",
+                    "name": "o-ran-sc/ric-app-ml",
+                    "tag": "1.0.0"
+                }
+            }
+        ],
+        "messaging": {
+            "ports": [
+                {
+                    "name": "http",
+                    "container": "ml",
+                    "port": 8080,
+                    "description": "http service"
+                },
+                {
+                    "name": "rmr-data",
+                    "container": "ml",
+                    "port": 4560,
+                    "txMessages": ["TS_ANOMALY_UPDATE"],
+                    "rxMessages": ["TS_ANOMALY_ACK"],
+                    "policies": [],
+                    "description": "rmr receive data port for ml"
+                },
+                {
+                    "name": "rmr-route",
+                    "container": "ml",
+                    "port": 4561,
+                    "description": "rmr route port for ml"
+                }
+            ]
+        },
+        "rmr": {
+            "protPort": "tcp:4560",
+            "maxSize": 2072,
+            "numWorkers": 1,
+            "rxMessages": ["TS_ANOMALY_ACK"],
+            "txMessages": ["TS_ANOMALY_UPDATE"],
+            "policies": []
+        }
+
+}
+
